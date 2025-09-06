@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Career Suggestion After 10th</title>
+  <style>
+    /* General Styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #f0f9ff, #c7d2fe);
+      overflow-x: hidden;
+    }
+    header {
+      background: #6c63ff;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3.5em;
+    }
+    header .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: #5348c5;
+      opacity: 0.2;
+      z-index: 1;
+    }
+    header .circle:nth-child(1) {
+      width: 300px;
+      height: 300px;
+      top: -80px;
+      left: 10%;
+    }
+    header .circle:nth-child(2) {
+      width: 400px;
+      height: 400px;
+      bottom: -200px;
+      right: 15%;
+    }
+    .container {
+      background: white;
+      width: 90%;
+      margin: 30px auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+      position: relative;
+      max-width: 1200px;
+    }
+    h2 {
+      text-align: center;
+      color: #6c63ff;
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
+      margin: 10px 0 5px;
+      display: block;
+    }
+    select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      background-color: #f8f8f8;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      background: #6c63ff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #5348c5;
+    }
+    .result {
+      margin-top: 20px;
+      text-align: center;
+      color: #333;
+    }
+    .stream-box {
+      background: #f3f4f6;
+      padding: 20px;
+      margin: 10px 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+    .stream-box h4 {
+      color: #6c63ff;
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+    .stream-description {
+      display: none;
+      font-size: 1em;
+      color: #333;
+      margin-top: 10px;
+    }
+    footer {
+      background: #6c63ff;
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    footer h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    footer ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    footer ul li {
+      font-size: 18px;
+      margin: 10px 0;
+      text-align: left;
+    }
+    footer ul li span {
+      font-weight: bold;
+    }
+    footer p {
+      margin-top: 20px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Career Suggestion System</h1>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </header>
+
+  <div class="container">
+    <h2>Find the Right Career Path for You</h2>
+    <label for="fav-subjects">Favorite Subjects:</label>
+    <select id="fav-subjects" onchange="updateOptions()">
+      <option value="" disabled selected>Select Your Subject</option>
+      <option value="physics">Physics</option>
+      <option value="chemistry">Chemistry</option>
+      <option value="math">Mathematics</option>
+      <option value="cs">Computer Science</option>
+      <option value="history">History</option>
+      <option value="english">English</option>
+      <option value="biology">Biology</option>
+      <option value="economics">Economics</option>
+      <option value="geography">Geography</option>
+      <option value="hindi">Hindi</option>
+    </select>
+    <label for="least-fav-subjects">Least Favorite Subjects:</label>
+    <select id="least-fav-subjects" onchange="updateOptions()">
+      <option value="" disabled selected>Select Your Subject</option>
+      <option value="physics">Physics</option>
+      <option value="chemistry">Chemistry</option>
+      <option value="math">Mathematics</option>
+      <option value="cs">Computer Science</option>
+      <option value="history">History</option>
+      <option value="english">English</option>
+      <option value="biology">Biology</option>
+      <option value="economics">Economics</option>
+      <option value="geography">Geography</option>
+      <option value="hindi">Hindi</option>
+    </select>
+    <label for="not-interested-subjects">Not Interested Subjects:</label>
+    <select id="not-interested-subjects" onchange="updateOptions()">
+      <option value="" disabled selected>Select Your Subject</option>
+      <option value="physics">Physics</option>
+      <option value="chemistry">Chemistry</option>
+      <option value="math">Mathematics</option>
+      <option value="cs">Computer Science</option>
+      <option value="history">History</option>
+      <option value="english">English</option>
+      <option value="biology">Biology</option>
+      <option value="economics">Economics</option>
+      <option value="geography">Geography</option>
+      <option value="hindi">Hindi</option>
+    </select>
+    <button onclick="showSuggestions()">Suggest Stream</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <footer>
+    <h2>Available Streams After 10th</h2>
+    <ul>
+      <li><span>Science</span> Ideal for careers in Engineering, Medicine, and Technology.</li>
+      <li><span>Commerce:</span> Suitable for careers in Finance, Accounting, and Business.</li>
+      <li><span>Arts:</span> Perfect for Creative, Humanities, and Social Science careers.</li>
+      <li><span>Polytechnic:</span> Focuses on practical and technical skills in various trades.</li>
+      <li><span>ITI:</span> Industrial training for specific technical or trade jobs.</li>
+    </ul>
+    <p>For more details, contact us at: <a href="mailto:meshramh744@gmail.com">meshramh744@gmail.comm</a></p>
+  </footer>
+
+  <script>
+    function updateOptions() {
+      const fav = document.getElementById("fav-subjects").value;
+      const leastFavSelect = document.getElementById("least-fav-subjects");
+      const notInterestedSelect = document.getElementById("not-interested-subjects");
+
+      resetOptions();
+
+      Array.from(leastFavSelect.options).forEach(option => {
+        if (option.value === fav) option.style.display = "none";
+      });
+
+      Array.from(notInterestedSelect.options).forEach(option => {
+        if (option.value === fav) option.style.display = "none";
+      });
+    }
+
+    // Reset all options to visible
+    function resetOptions() {
+      const selectElements = document.querySelectorAll("select");
+      selectElements.forEach(select => {
+        Array.from(select.options).forEach(option => {
+          option.style.display = "";
+        });
+      });
+    }
+
+    function showSuggestions() {
+      const fav = document.getElementById("fav-subjects").value;
+      const leastFav = document.getElementById("least-fav-subjects").value;
+      const notInterested = document.getElementById("not-interested-subjects").value;
+
+      const result = document.getElementById("result");
+
+      // Define weight for subjects to suggest streams
+      const streamScores = {
+        science: 0,
+        commerce: 0,
+        arts: 0,
+        polytechnic: 0,
+        iti: 0
+      };
+
+      // Based on favorite subject
+      switch (fav) {
+        case "physics":
+        case "chemistry":
+        case "math":
+        case "biology":
+          streamScores.science += 3;
+          break;
+        case "cs":
+          streamScores.polytechnic += 3;
+          break;
+        case "economics":
+          streamScores.commerce += 3;
+          break;
+        case "history":
+        case "geography":
+        case "english":
+        case "hindi":
+          streamScores.arts += 3;
+          break;
+      }
+
+      // Least favorite subject - reduce score slightly
+      switch (leastFav) {
+        case "physics":
+        case "chemistry":
+        case "math":
+        case "biology":
+          streamScores.science -= 1;
+          break;
+        case "cs":
+          streamScores.polytechnic -= 1;
+          break;
+        case "economics":
+          streamScores.commerce -= 1;
+          break;
+        case "history":
+        case "geography":
+        case "english":
+        case "hindi":
+          streamScores.arts -= 1;
+          break;
+      }
+
+      // Not interested - strongly reduce score
+      switch (notInterested) {
+        case "physics":
+        case "chemistry":
+        case "math":
+        case "biology":
+          streamScores.science -= 2;
+          break;
+        case "cs":
+          streamScores.polytechnic -= 2;
+          break;
+        case "economics":
+          streamScores.commerce -= 2;
+          break;
+        case "history":
+        case "geography":
+        case "english":
+        case "hindi":
+          streamScores.arts -= 2;
+          break;
+      }
+
+      // Always keep polytechnic and ITI as backup
+      streamScores.polytechnic += 1;
+      streamScores.iti += 1;
+
+      // Sort by score
+      const sorted = Object.entries(streamScores)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 4); // top 4
+
+      const streamInfo = {
+        science: {
+          title: "Science",
+          desc: "Best for technical and medical fields. Suitable for engineering and medical careers.",
+          details: "<strong>Scope:</strong> Science offers a range of careers in Engineering, Medicine, Research, and Technology. Students can choose specialized fields such as Computer Science, Physics, Chemistry, or Biology."
+        },
+        commerce: {
+          title: "Commerce",
+          desc: "Great for business, finance, and accounting. Ideal for corporate and entrepreneurial paths.",
+          details: "<strong>Scope:</strong> Commerce stream opens doors to careers in Banking, Finance, Accounting, Marketing, and Management. It's suitable for students interested in business administration and entrepreneurship."
+        },
+        arts: {
+          title: "Arts",
+          desc: "Explore creativity, literature, social sciences, and humanities for a broad range of careers.",
+          details: "<strong>Scope:</strong> Arts stream offers a wide array of opportunities in literature, music, theater, history, and social sciences. Students can go for careers in teaching, writing, psychology, or public relations."
+        },
+        polytechnic: {
+          title: "Polytechnic/ITI",
+          desc: "Focuses on practical skills in various trades. Ideal for hands-on technical careers.",
+          details: "<strong>Scope:</strong> Polytechnic and ITI courses provide students with hands-on technical knowledge. Students can pursue careers in engineering, mechanics, electrical, and other skilled trades."
+        },
+        iti: {
+          title: "ITI",
+          desc: "Short-term skill-based industrial training. Good for early job opportunities.",
+          details: "<strong>Scope:</strong> ITI focuses on developing trade-specific skills in fields like welding, plumbing, electrical, and more. Great for students wanting quick employment or technical work."
+        }
+      };
+
+      let html = "<h3>Recommended Streams</h3>";
+      sorted.forEach(([key], index) => {
+        const info = streamInfo[key];
+        html += `
+          <div class="stream-box" onclick="toggleDescription('${key}')">
+            <h4>${index + 1}. ${info.title}</h4>
+            <p>${info.desc}</p>
+            <div id="${key}-description" class="stream-description">
+              <p>${info.details}</p>
+            </div>
+          </div>
+        `;
+      });
+
+      result.innerHTML = html;
+    }
+
+    function toggleDescription(stream) {
+      const desc = document.getElementById(`${stream}-description`);
+      desc.style.display = desc.style.display === "block" ? "none" : "block";
+    }
+  </script>
+</body>
+</html>
